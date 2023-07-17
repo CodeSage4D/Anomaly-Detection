@@ -1,0 +1,60 @@
+low-level algorithms that can be used in an anomaly detection system:
+/*----------------------------------------------------------------------------------------------*/
+
+1)  Standard Deviation (Z-Score) Method:
+
+Determine the data's mean and standard deviation.
+Calculate each data point's Z-score using the following equation: Z = (X - mean) / standard deviation.
+Set a Z-score threshold that, when exceeded, will identify data points as anomalies.
+
+2)  LOF: local outlier factor
+
+Determine the distance to each data point's k-nearest neighbours for each data point.
+Based on the distances to each data point's neighbours, get the Local Reachability Density (LRD) of each data point.
+By comparing each data point's LRD to the LRD of its neighbours, get the local outlier factor for each data point.
+Anomalies are data points having a considerably lower LOF.
+
+3)  Forest of Isolation:
+
+Divide the data between the highest and minimum values of the characteristic you randomly chose.
+To build an isolation tree, carry out the procedure again.
+To create an isolation forest, use a number of isolation trees.
+Anomalies are found in situations where it takes fewer splits to isolate them in the forest.
+
+4)  SVM (Support Vector Machine) One-Class:
+
+Train an SVM to distinguish the origin (located at the origin) from the typical instances.
+Positive data points on the hyperplane are regarded as normal, whereas negative data points constitute abnormalities.
+
+5) Autoencoders:
+
+Encoder and decoder training for neural networks.
+The input data should be encoded into a lower-dimensional representation (latent space), and subsequently it should be decoded to return to the original space.
+Based on the reconstruction error, anomalies are recognised; larger reconstruction errors denote abnormalities.
+Anomaly is detected if reconstruction error exceeds some value or input/output distribution diverges significantly
+
+6) Density-Based Spatial Clustering of Applications with Noise, or DBSCAN
+
+Find the core, boundary, and noise points by clustering the data according to density.
+Anomalies are regarded as noise points.
+
+7) Mahalanobis Diameter:
+
+Utilising the data's mean and covariance, get the Mahalanobis distance for each data point.
+If a data point's Mahalanobis distance is greater than the threshold, set a threshold value that will mark the data point as an anomaly.
+
+8)  Histogram-Based Outlier Score (HBOS):
+
+Divide the data into intervals (bins) and create histograms for each feature.
+Calculate the outlier score for each data point based on the product of its feature probabilities.
+Lower outlier scores indicate anomalies.
+
+9)  Random Cut Forest (RCF)
+
+Create a random binary tree using the input.
+How anomalies are discovered depends on the number of cuts required to isolate a data item.
+
+10)  Predicting outliers based on proximity:
+
+Calculate each data point's distance from its k-nearest neighbours.
+Anomalies are data points with considerably higher proximity values.
